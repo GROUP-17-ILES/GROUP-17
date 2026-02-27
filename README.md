@@ -15,3 +15,5 @@ An Internship Logging and Evaluation System
 -Academic Evaluation Module
 -Weighted Score Computation
 -Dashboards and Reporting
+
+##
