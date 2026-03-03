@@ -1,1 +1,27 @@
-SOFTWARE DEVELOPMENT PROJECTWORKFLOW STATE 1. DRAFT* Created by the student* Can be edited freely* Not visible to any of the supervisors2. SUBMITTED* Student submits* Can no longer be edited unless not approved * Visible to the workplace supervisor3. REVIEWED* Workplace supervisor adds comments or pitches in ideas * Can approve or reject basing on what is required or not NB: If rejected the model is sent back to the student for re-editing and resubmission 4. APPROVED     In this case there are two stages of approval a) Approval from workplace supervisor b) Approval from academic supervisor(lecturer)APPROVED BY WORKPLACE * Workplace supervisor approves* Sent to academic supervisorAPPROVED ACADEMIC SUPERVISOR* Final approval* Fully locked* Lecturer uses submission for evaluationWORKFLOW DIAGRAM	
+SOFTWARE DEVELOPMENT PROJECT
+WORKFLOW STATE 
+1. DRAFT
+* Created by the student
+* Can be edited freely
+* Not visible to any of the supervisors
+2. SUBMITTED
+* Student submits
+* Can no longer be edited unless not approved 
+* Visible to the workplace supervisor
+3. REVIEWED
+* Workplace supervisor adds comments or pitches in ideas 
+* Can approve or reject basing on what is required or not 
+NB: If rejected the model is sent back to the student for re-editing and resubmission 
+4. APPROVED 
+    In this case there are two stages of approval 
+a) Approval from workplace supervisor 
+b) Approval from academic supervisor(lecturer)
+
+APPROVED BY WORKPLACE 
+* Workplace supervisor approves
+* Sent to academic supervisor
+APPROVED ACADEMIC SUPERVISOR
+* Final approval
+* Fully locked
+* Lecturer uses submission for evaluation
+	
