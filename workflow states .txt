@@ -1,16 +1,17 @@
 SOFTWARE DEVELOPMENT PROJECT
 WORKFLOW STATE 
 1. DRAFT
-* Created by the student
-* Can be edited freely
-* Not visible to any of the supervisors
+Created by the student
+ •Action: Student uploads their work (e.g., a project report or logbook) and completes a self-evaluation.
+ •Metric: The student rates their own performance against predefined criteria like technical expertise and communication skills.
+ •Permissions: Fully editable by the student; invisible to supervisors. 
 2. SUBMITTED
-* Student submits
-* Can no longer be edited unless not approved 
+* Action:Student timestamps submission, creating a digital audit trail for the review process.
+* Metric:Can no longer be edited unless not approved by the system as it checks for completeness.
 * Visible to the workplace supervisor
 3. REVIEWED
-* Workplace supervisor adds comments or pitches in ideas 
-* Can approve or reject basing on what is required or not 
+* Action:Workplace supervisor adds comments or pitches in ideas as he evaluates the student's performance.
+* Can approve or reject according to the standardized scorecard.
 NB: If rejected the model is sent back to the student for re-editing and resubmission 
 4. APPROVED 
     In this case there are two stages of approval 
@@ -19,9 +20,9 @@ b) Approval from academic supervisor(lecturer)
 
 APPROVED BY WORKPLACE 
 * Workplace supervisor approves
-* Sent to academic supervisor
+* Routed to academic supervisor
 APPROVED ACADEMIC SUPERVISOR
-* Final approval
+* Final approval where the academic supervisor gives feedback in comparison to the workplace supervisor's rating.
 * Fully locked
-* Lecturer uses submission for evaluation
+
 	
