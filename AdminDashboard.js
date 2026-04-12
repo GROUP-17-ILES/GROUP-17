@@ -32,7 +32,7 @@ function AdminDashboard() {
     <>
       <Navbar bg="dark" variant="dark" className="navbar-custom">
         <Container>
-          <Navbar.Brand class-name="fw-bold"> Internship Logging & Evaluation System (ILES)</Navbar.Brand>  
+          <Navbar.Brand className="fw-bold"> Internship Logging & Evaluation System (ILES)</Navbar.Brand>  
         </Container>
       </Navbar>
     
