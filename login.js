@@ -1,10 +1,15 @@
 import { useState } from "react";
 import { Button } from 'react-bootstrap';
-
+import './loginstyle.css';
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  
+  const [loginAs, setLoginAs] = useState("");
+
+  const navigate = (path) => {
+    window.location.href = path;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     
@@ -13,7 +18,7 @@ function Login() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ username, password, loginAs }),
     })
     .then(res => res.json())
     .then(data => {
@@ -40,9 +45,9 @@ function Login() {
 
   return (
     <div className="container mt-5">
-      <h2 className="text-center">Login</h2>
+      <h2 className="login-heading">(ILES)</h2>
 
-      <form onSubmit={handleSubmit} className="card p-4 shadow">
+      <form onSubmit={handleSubmit} className="card p-4 shadow login-card">
         <div className="mb-3">
           <input
             type="text"
@@ -52,7 +57,7 @@ function Login() {
           />
         </div>
 
-        <div className="mb-3">
+        <div className="input-group mb-3">
           <input
             type="password"
             className="form-control"
@@ -60,9 +65,30 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <Button type="submit" className="w-100" variant="primary">
+
+        <div className="login-select-row mb-3">
+          <label htmlFor="loginAs" className="dropdown-label">
+            Login as
+          </label>
+          <select
+            id="loginAs"
+            value={loginAs}
+            onChange={(e) => setLoginAs(e.target.value)}
+            className="form-select"
+          >
+            <option value="admin">Admin</option>
+            <option value="student">Student</option>
+            <option value="workplace_supervisior">Workplace Supervisor</option>
+            <option value="academic_supervisior">Academic Supervisor</option>
+          </select>
+        </div>
+
+        <Button type="submit">
           Login
         </Button>
+        <div className="login-footer">
+                <a href="#" className="forgot-link">Forgot Password</a>
+        </div>
       </form>
     </div>
   );
