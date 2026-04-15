@@ -49,17 +49,11 @@ body {
   animation: fadeInUp 0.8s ease-out;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.button-custom {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  color: white;
-  background: #667eea;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+.login-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.4);
+  }
+
 .login-heading {
   text-align: center;
   white-space: nowrap;
@@ -119,4 +113,20 @@ body {
 .login-select-row .form-select {
   flex: 1;
   min-width: 150px;
+}
+.custom-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  color: white;
+  background: #667eea;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.custom-button:hover {
+  background: #5a67d8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
