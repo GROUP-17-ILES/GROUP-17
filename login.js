@@ -68,7 +68,7 @@ function Login() {
 
         <div className="login-select-row mb-3">
           <label htmlFor="loginAs" className="dropdown-label">
-            Login as
+            <button type="submit" className="custom-button">Login as </button>
           </label>
           <select
             id="loginAs"
@@ -83,9 +83,9 @@ function Login() {
           </select>
         </div>
 
-        <Button type="submit">
-          Login
-        </Button>
+        <button type="submit" className="custom-button">
+          Sign Up 
+        </button>
         <div className="login-footer">
                 <a href="#" className="forgot-link">Forgot Password</a>
         </div>
