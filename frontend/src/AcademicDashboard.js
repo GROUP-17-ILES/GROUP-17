@@ -155,7 +155,7 @@ export default function AcademicDashboard() {
         <h3>Welcome, {user?.username} 👋</h3>
         <p className="text-muted">Academic Supervisor Dashboard</p>
 
-        {/* Statistics Cards */}
+        
         <Row className="my-4">
           <Col md={3}>
             <Card className="shadow-sm dashboard-card">
@@ -196,7 +196,7 @@ export default function AcademicDashboard() {
           </Col>
         </Row>
 
-        {/* Student List */}
+        
         <Card className="shadow-sm mb-4">
           <Card.Body>
             <Card.Title>Assigned Students Overview</Card.Title>
@@ -241,7 +241,7 @@ export default function AcademicDashboard() {
           </Card.Body>
         </Card>
 
-        {/* Student Reports */}
+        
         <Card className="shadow-sm">
           <Card.Body>
             <Card.Title>Student Weekly Reports</Card.Title>
@@ -291,7 +291,7 @@ export default function AcademicDashboard() {
         </Card>
       </Container>
 
-      {/* Review Modal */}
+      
       <Modal show={showReviewModal} onHide={() => setShowReviewModal(false)} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Review Report - {selectedReport?.studentName}</Modal.Title>
@@ -397,7 +397,7 @@ export default function AcademicDashboard() {
         </Modal.Footer>
       </Modal>
 
-      {/* Student Details Modal */}
+      
       <Modal show={showStudentModal} onHide={() => setShowStudentModal(false)} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Student Details - {selectedStudent?.name}</Modal.Title>
