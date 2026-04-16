@@ -34,7 +34,7 @@ function AdminDashboard() {
   };
 
   const handleNewUser = (NewUser) => {
-    // Handle user deletion or management
+    
     console.log('Managing user:', NewUser);
   };
 
@@ -98,7 +98,7 @@ function AdminDashboard() {
         </Col>
 
         <Row>
-          {/* User Management Section */}
+          
           <Col lg={6} className="mb-4">
             <Card className="main-card h-100">
               <Card.Header>
@@ -194,7 +194,7 @@ function AdminDashboard() {
             </Card>
           </Col>
 
-          {/* Reports Section */}
+          
           <Col lg={6} className="mb-4">
             <Card className="main-card h-100">
               <Card.Header>
@@ -233,7 +233,7 @@ function AdminDashboard() {
         </Row>
 
         <Row>
-          {/* System Overview Section */}
+          
           <Col lg={6} className="mb-4">
             <Card className="main-card">
               <Card.Header>
@@ -263,7 +263,7 @@ function AdminDashboard() {
             </Card>
           </Col>
 
-          {/* System Logs Section */}
+        
           <Col lg={6} className="mb-4">
             <Card className="main-card">
               <Card.Header>
