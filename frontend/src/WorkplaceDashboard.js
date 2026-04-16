@@ -170,7 +170,7 @@ export default function WorkplaceDashboard() {
         <h3>Welcome, {user?.username} 👋</h3>
         <p className="text-muted">Workplace Supervisor Dashboard</p>
 
-        {/* Statistics Cards */}
+        
         <Row className="my-4">
           <Col md={3}>
             <Card className="shadow-sm dashboard-card">
@@ -209,7 +209,7 @@ export default function WorkplaceDashboard() {
           </Col>
         </Row>
 
-        {/* Interns Overview */}
+        
         <Card className="shadow-sm mb-4">
           <Card.Body>
             <div className="d-flex justify-content-between align-items-center mb-3">
@@ -273,7 +273,7 @@ export default function WorkplaceDashboard() {
           </Card.Body>
         </Card>
 
-        {/* Recent Attendance */}
+        
         <Card className="shadow-sm mb-4">
           <Card.Body>
             <Card.Title>Recent Attendance Records</Card.Title>
@@ -311,7 +311,7 @@ export default function WorkplaceDashboard() {
           </Card.Body>
         </Card>
 
-        {/* Evaluations */}
+        
         <Card className="shadow-sm">
           <Card.Body>
             <Card.Title>Performance Evaluations</Card.Title>
@@ -351,7 +351,7 @@ export default function WorkplaceDashboard() {
         </Card>
       </Container>
 
-      {/* Intern Details Modal */}
+      
       <Modal show={showInternModal} onHide={() => setShowInternModal(false)} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Intern Details - {selectedIntern?.name}</Modal.Title>
@@ -430,7 +430,7 @@ export default function WorkplaceDashboard() {
         </Modal.Footer>
       </Modal>
 
-      {/* Evaluation Modal */}
+      
       <Modal show={showEvaluationModal} onHide={() => setShowEvaluationModal(false)} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Evaluate Intern - {selectedIntern?.name}</Modal.Title>
@@ -521,7 +521,7 @@ export default function WorkplaceDashboard() {
         </Modal.Footer>
       </Modal>
 
-      {/* Attendance Modal */}
+      
       <Modal show={showAttendanceModal} onHide={() => setShowAttendanceModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Mark Attendance</Modal.Title>
