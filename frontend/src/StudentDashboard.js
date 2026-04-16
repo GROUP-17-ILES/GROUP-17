@@ -94,7 +94,7 @@ export default function StudentDashboard() {
         <h3>Welcome, {studentInfo.name} 👋</h3>
         <p className="text-muted">Student Intern Dashboard</p>
 
-        {/* Student Info Card */}
+        
         <Card className="shadow-sm mb-4">
           <Card.Body>
             <Row>
@@ -127,7 +127,7 @@ export default function StudentDashboard() {
           </Card.Body>
         </Card>
 
-        {/* Statistics */}
+        
         <Row className="my-4">
           <Col md={3}>
             <Card className="shadow-sm dashboard-card">
@@ -167,7 +167,7 @@ export default function StudentDashboard() {
           </Col>
         </Row>
 
-        {/* Tasks */}
+        
         <Card className="shadow-sm mb-4">
           <Card.Body>
             <Card.Title>Assigned Tasks</Card.Title>
@@ -212,7 +212,7 @@ export default function StudentDashboard() {
           </Card.Body>
         </Card>
 
-        {/* Weekly Reports */}
+        
         <Card className="shadow-sm mb-4">
           <Card.Body>
             <Card.Title>Weekly Reports</Card.Title>
@@ -259,7 +259,7 @@ export default function StudentDashboard() {
           </Card.Body>
         </Card>
 
-        {/* Attendance Record */}
+        
         <Card className="shadow-sm">
           <Card.Body>
             <Card.Title>Attendance Summary</Card.Title>
@@ -297,7 +297,7 @@ export default function StudentDashboard() {
         </Card>
       </Container>
 
-      {/* Report Modal */}
+      
       <Modal show={showReportModal} onHide={() => setShowReportModal(false)} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>
