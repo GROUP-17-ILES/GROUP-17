@@ -155,8 +155,8 @@ function Login() {
               className="form-select"
             >
               <option value="">Select role</option>
-              <option value="admin">Admin</option>
-              <option value="student">Student</option>
+              <option value="admin">Internship Administrator</option>
+              <option value="student">Student Intern</option>
               <option value="workplace_supervisior">Workplace Supervisor</option>
               <option value="academic_supervisior">Academic Supervisor</option>
             </select>
