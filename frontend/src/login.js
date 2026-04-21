@@ -75,9 +75,9 @@ function Login() {
 
           if (data.role === "student") {
             navigate("/student");
-          } else if (data.role === "academic_supervisior") {
+          } else if (data.role === "academic_supervisor") {
             navigate("/academic");
-          } else if (data.role === "workplace_supervisior") {
+          } else if (data.role === "workplace_supervisor") {
             navigate("/workplace");
           } else if (data.role === "Internship_admin") {
             navigate("/admin");
@@ -137,8 +137,8 @@ function Login() {
               <option value="">Select role</option>
               <option value="student">Student Intern</option>
               <option value="admin">Internship Administrator</option>
-              <option value="workplace_supervisior">Workplace Supervisor</option>
-              <option value="academic_supervisior">Academic Supervisor</option>
+              <option value="workplace_supervisor">Workplace Supervisor</option>
+              <option value="academic_supervisor">Academic Supervisor</option>
             </select>
           </div>
         )}
@@ -157,8 +157,8 @@ function Login() {
               <option value="">Select role</option>
               <option value="admin">Internship Administrator</option>
               <option value="student">Student Intern</option>
-              <option value="workplace_supervisior">Workplace Supervisor</option>
-              <option value="academic_supervisior">Academic Supervisor</option>
+              <option value="workplace_supervisor">Workplace Supervisor</option>
+              <option value="academic_supervisor">Academic Supervisor</option>
             </select>
           </div>
         )}
