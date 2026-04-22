@@ -6,7 +6,7 @@ function AcademicEvaluation() {
   const [assignedStudents] = useState([
     { id: "25/U/03585/EVE", name: "Ssenyunja Jack" },
     { id: "25/U/09821/DAY", name: "Namukasa Sarah" },
-    { id: "25/U/11244/EVE", name: "Okarun Paul" }
+    { id: "25/U/11244/EVE", name: "Adli Hermen" }
   ]);
 
   const [evaluationData, setEvaluationData] = useState({
