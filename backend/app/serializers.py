@@ -1,137 +1,130 @@
 from rest_framework import serializers
-from datetime import date
-from django.contrib.auth import get_user_model
-from django.contrib.auth.password_validation import validate_password
-from .models import InternshipPlacement, WeeklyLog, Evaluation, EvaluationCriteria
-
-CustomUser = get_user_model()
+from django.contrib.auth import authenticate
+from .models import CustomUser, Evaluation, EvaluationCriteria, InternshipPlacement, StudentIntern, AcademicSupervisor, WeeklyLog, WorkplaceSupervisor
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ['id', 'username', 'email', 'name', 'role', 'phone_number', 'created_at']
-        read_only_fields = ['id', 'created_at']
+        read_only_fields = ['created_at']
 
-class RegisterSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
-    password2 = serializers.CharField(write_only=True, required=True)
-    
+class UserRegistrationSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True, required=True, style={'input_type': 'password'})
+    password2 = serializers.CharField(write_only=True, required=True, style={'input_type': 'password'}) 
     class Meta:
         model = CustomUser
-        fields = ['username', 'password', 'password2', 'email', 'name', 'role', 'phone_number']
-
+        fields = ['username', 'email', 'password', 'password2', 'name', 'role', 'phone_number']
+    
     def validate(self, attrs):
         if attrs['password'] != attrs['password2']:
             raise serializers.ValidationError({"password": "Password fields didn't match."})
         return attrs
+    
     def create(self, validated_data):
         validated_data.pop('password2')
+        password = validated_data.pop('password')
         user = CustomUser.objects.create_user(**validated_data)
+        user.set_password(password)
+        user.save()
         return user
 
-class InternshipPlacementSerializer(serializers.ModelSerializer):
-    user_name = serializers.ReadOnlyField(source='user.username')
-    user_email = serializers.ReadOnlyField(source='user.email')
-    workplace_supervisor_name = serializers.SerializerMethodField()
-    academic_supervisor_name = serializers.SerializerMethodField()
-    is_active = serializers.ReadOnlyField()
-    duration_weeks = serializers.ReadOnlyField()
-    
-    class Meta:
-        model = InternshipPlacement
-        fields = '__all__'
-        read_only_fields = ['created_at', 'updated_at', 'status', 'approved_at', 'rejection_reason']
-    
-    def get_workplace_supervisor_name(self, obj):
-        if obj.workplace_supervisor:
-            return obj.workplace_supervisor.username
-        return None
-    
-    def get_academic_supervisor_name(self, obj):
-        if obj.academic_supervisor:
-            return obj.academic_supervisor.username
-        return None
-    def validate(self, data):
-        """Comprehensive validation for placement"""
-        user = data.get('user')
-        start_date = data.get('start_date')
-        end_date = data.get('end_date')
-        
-        if start_date and end_date:
-            if start_date > end_date:
-                raise serializers.ValidationError({
-                    'end_date': 'End date must be after start date'
-                })
-            
-            if start_date < date.today():
-                raise serializers.ValidationError({
-                    'start_date': 'Start date cannot be in the past'
-                })
-        
-    
-        if user and start_date and end_date:
-            overlapping = InternshipPlacement.objects.filter(
-                user=user,
-                status__in=['pending', 'active'],  # Only check active/pending placements
-                start_date__lte=end_date,
-                end_date__gte=start_date
-            )
-            
-            if self.instance:
-                overlapping = overlapping.exclude(id=self.instance.id)
-            
-            if overlapping.exists():
-                overlap = overlapping.first()
-                raise serializers.ValidationError({
-                    'non_field_errors': f'You already have a placement from {overlap.start_date} to {overlap.end_date} at {overlap.company_name}'
-                })
-        
-        if start_date and end_date:
-            days = (end_date - start_date).days
-            if days < 28:  # 4 weeks
-                raise serializers.ValidationError({
-                    'end_date': 'Internship must be at least 4 weeks (28 days)'
-                })
-        
-        if start_date and end_date:
-            days = (end_date - start_date).days
-            if days > 84:  # 12 weeks
-                raise serializers.ValidationError({
-                    'end_date': 'Internship cannot exceed 12 weeks (84 days) without special approval'
-                })  
-        return data
-    
-    def create(self, validated_data):
-        """Auto-set status to pending on creation"""
-        validated_data['status'] = 'pending'
-        return super().create(validated_data)
-class WeeklyLogSerializer(serializers.ModelSerializer):
-    user_name = serializers.ReadOnlyField(source='user.username')
-    
-    class Meta:
-        model = WeeklyLog
-        fields = '__all__'
-        read_only_fields = ['date_submitted', 'status']
 
-    def validate_week_number(self, value):
-        if value < 1 or value > 52:
-            raise serializers.ValidationError("Week number must be between 1 and 52")
-        return value
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    password = serializers.CharField(write_only=True, style={'input_type': 'password'})
+    
+    def validate(self, attrs):
+        username = attrs.get('username')
+        password = attrs.get('password')
+        
+        if username and password:
+            user = authenticate(request=self.context.get('request'),
+                              username=username, password=password)
+            if not user:
+                raise serializers.ValidationError('Unable to log in with provided credentials.')
+        else:
+            raise serializers.ValidationError('Must include "username" and "password".') 
+        attrs['user'] = user
+        return attrs
 
-class EvaluationCriteriaSerializer(serializers.ModelSerializer):
+class StudentInternSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=False)
+    user_id = serializers.PrimaryKeyRelatedField(
+        queryset=CustomUser.objects.filter(role='studentintern'),
+        source='user',
+        write_only=True
+    ) 
     class Meta:
-        model = EvaluationCriteria
-        fields = '__all__'
-
-class EvaluationSerializer(serializers.ModelSerializer):
-    criteria_name = serializers.ReadOnlyField(source='criteria.name')
-    user_name = serializers.ReadOnlyField(source='user.username')
-    class Meta:
-        model = Evaluation
-        fields = '__all__'
+        model = StudentIntern
+        fields = ['id', 'user', 'user_id', 'student_number', 'course_of_study', 
+                  'university_name', 'current_year_of_study', 'created_at']
         read_only_fields = ['created_at']
 
-    def validate_score(self, value):
-        if value < 0 or value > 100:
-            raise serializers.ValidationError("Score must be between 0 and 100")
-        return value
+class WorkplaceSupervisorSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=False)
+    user_id = serializers.PrimaryKeyRelatedField(
+        queryset=CustomUser.objects.filter(role='workplacesupervisor'),
+        source='user',
+        write_only=True
+    )
+    class Meta:
+        model = WorkplaceSupervisor
+        fields = ['id', 'user', 'user_id', 'company_name', 'department', 
+                  'employee_id', 'created_at']
+        read_only_fields = ['created_at']
+
+class AcademicSupervisorSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=False)
+    user_id = serializers.PrimaryKeyRelatedField(
+        queryset=CustomUser.objects.filter(role='academicsupervisor'),
+        source='user',
+        write_only=True
+    )  
+    class Meta:
+        model = AcademicSupervisor
+        fields = ['id', 'user', 'user_id', 'department', 'employee_id', 'created_at']
+        read_only_fields = ['created_at']
+
+class UserDetailSerializer(serializers.ModelSerializer):
+    profile = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = CustomUser
+        fields = ['id', 'username', 'email', 'name', 'role', 'phone_number', 'profile', 'created_at']
+    
+    def get_profile(self, obj):
+        if obj.role == 'studentintern' and hasattr(obj, 'studentintern'):
+            return StudentInternSerializer(obj.studentintern).data
+        elif obj.role == 'academicsupervisor' and hasattr(obj, 'academicsupervisor'):
+            return AcademicSupervisorSerializer(obj.academicsupervisor).data
+        return None
+    
+class InternshipPlacementSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=False)
+    user_id = serializers.PrimaryKeyRelatedField(
+        queryset=CustomUser.objects.all(),
+        source='user',
+        write_only=True
+    )  
+    class Meta:
+        model = InternshipPlacement
+        fields = ['id', 'user', 'user_id', 'company_name', 'department', 
+                  'supervisior_name', 'start_date', 'end_date']
+
+class EvaluationSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=False)  
+    class Meta:
+        model = Evaluation
+        fields = ['user', 'week_number', 'criteria', 'score', 'comments', 'skills_learned', 'challenges_faced', 'feedback']
+        
+class EvaluationCriteriaSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=False)
+    class Meta:
+        model = EvaluationCriteria
+        fields = ['id','user' ,'name', 'max_score']
+
+class WeeklyLogSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=False)
+    class Meta:
+        model = WeeklyLog
+        fields = ['user', 'week_number', 'description', 'date_submitted']
