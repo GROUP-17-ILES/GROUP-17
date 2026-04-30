@@ -1,7 +1,7 @@
 import { Container, Row, Col, Card, Table, Button, Navbar, Nav, CardHeader, Form } from "react-bootstrap";
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ActivityBarChart from './ActivityBarChart';
+import ActivityBarChart from '../components/ActivityBarChart';
 import '../style/dash.css';
 
 function AdminDashboard() {

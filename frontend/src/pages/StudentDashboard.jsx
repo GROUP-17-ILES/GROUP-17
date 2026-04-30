@@ -222,7 +222,6 @@ export default function StudentDashboard() {
                   <th>Week</th>
                   <th>Submitted Date</th>
                   <th>Status</th>
-                  <th>Feedback</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -241,7 +240,6 @@ export default function StudentDashboard() {
                         {report.status.toUpperCase()}
                       </Badge>
                     </td>
-                    <td>{report.feedback || '-'}</td>
                     <td>
                       <Button 
                         variant="primary" 
