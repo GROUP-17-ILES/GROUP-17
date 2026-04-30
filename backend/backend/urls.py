@@ -29,5 +29,5 @@ urlpatterns = [
     path('api/evaluations/', EvaluationView.as_view(), name='evaluation-list'),
     path('api/evaluation-criteria/', EvaluationCriteriaView.as_view(), name='evaluation-criteria-list'),
     path('api/weekly-logs/', WeeklyLogView.as_view(), name='weekly-log-list'),
-    path('api',('logs.urls')) 
+    
 ]
