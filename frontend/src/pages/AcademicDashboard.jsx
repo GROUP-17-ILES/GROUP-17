@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Container, Row, Col, Card, Table, Button, Navbar, Nav, Form, Modal, Badge } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../style/dash.css';
+import '../styles/dash.css';
 
 export default function AcademicDashboard() {
   const storedUser = localStorage.getItem('user');
