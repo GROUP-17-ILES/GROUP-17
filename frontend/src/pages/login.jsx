@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../style/dash.css';
+import '../styles/dash.css';
 import { useNavigate } from "react-router-dom";
 function Login() {
   const [email, setEmail] = useState("");
