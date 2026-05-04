@@ -163,4 +163,3 @@ class Meta:
          return f'{self.user.username}  -  {self.criteria.name}'
 from django.db import models
 
-# Create your models here.
