@@ -244,7 +244,7 @@ export default function StudentDashboard() {
                       <Button 
                         variant="primary" 
                         size="sm" 
-                        onClick={() => handleEditReport(report)}
+                        onClick={() => navigate('/weekly-reports', { state: { weekNumber: report.week} })}
                         disabled={report.status === 'approved'}
                       >
                         {report.status === 'draft' ? 'Write Report' : 'View/Edit'}
