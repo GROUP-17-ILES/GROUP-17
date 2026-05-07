@@ -1,6 +1,6 @@
 import { Container, Card, Form, Button, Row, Col } from "react-bootstrap";
 import { useState } from "react";
-import '../styles/dash.css';
+import '../../styles/dash.css';
 
 function WeeklyReports() {
     const [report, setReport] = useState({ startDate: "", endDate: "", accomplishments: "", challenges: "" });
