@@ -2,12 +2,12 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
-    ROLE_CHOICES=(
+    ROLE_CHOICES=[
            ('student', 'Student'),
            ('supervisor', 'Supervisor'),
            ('admin', 'Admin'),
          
-    )
+    ]
     name=models.CharField(max_length=30,null=False,blank=False)
     role=models.CharField(max_length=50,choices=ROLE_CHOICES)
     phone_number=models.CharField(max_length=15,blank=True,null=True)
