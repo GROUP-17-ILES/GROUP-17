@@ -2,7 +2,7 @@ import { Container, Row, Col, Card, Table, Button, Navbar, Nav, CardHeader, Form
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ActivityBarChart from '../components/ActivityBarChart';
-import '../styles/dash.css';
+import '../../styles/dash.css';
 
 function AdminDashboard() {
   const user = JSON.parse(localStorage.getItem("user"));
