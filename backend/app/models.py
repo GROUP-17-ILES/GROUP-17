@@ -61,7 +61,7 @@ class InternshipPlacement(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.place_of_internship}"
-    class WeeklyLog(models.Model):
+class WeeklyLog(models.Model):
     STATUS_CHOICES = [
         ('draft', 'Draft'),
         ('pending', 'Pending'),
@@ -165,6 +165,59 @@ class WeeklyLog(models.Model):
      def __str__(self):
          return f'Week{self.week_number}  -  {self.user.username} '
 
+class EvaluationCriteria(models.Model):
+    CRITERIA_CHOICES =[
+        ('technical', 'Technical Skills'),
+        ('cognitive', 'Cognitive Skills'),
+        ('soft', 'Soft Skills'),
+        ('professional', 'Professionalism'),
+        ('other', 'Others')
+    ]
+    criteria_name =  models.CharField(max_length=150)
+    criteria = models.CharField(max_length=20, choices=CRITERIA_CHOICES, default='other')
+    criteria_weight = models.FloatField(help_text="Enter the weight as a decimal: ")
+
+    def __str__(self):
+        return f"{self.criteria_name} - {self.criteria}"
+class Evaluation(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    placement = models.ForeignKey(InternshipPlacement, on_delete=models.CASCADE)
+    criteria = models.ForeignKey(EvaluationCriteria, on_delete=models.SET_NULL, null=True)
+    score = models.PositiveIntegerField()
+    comment = models.TextField(blank=True)
+    evaluation_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.placement.user.username} - {self.criteria}: {self.score}"
+        class Feedback(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='feedback')
+    subject = models.CharField(max_length=150)
+    message = models.TextField()
+    rating = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.subject} - {self.user.username}"
+
+
+class SiteSetting(models.Model):
+    site_name = models.CharField(max_length=100, default='ILES')
+    admin_email = models.EmailField(blank=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.site_name
+
+
+class Notification(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='notifications')
+    title = models.CharField(max_length=150)
+    message = models.TextField()
+    is_read = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+
 class StatusHistory(models.Model):
     log=models.ForeignKey(WeeklyLog,on_delete=models.CASCADE,related_name='history')
     old_status=models.CharField(max_length=10)
@@ -191,6 +244,18 @@ class Evaluation(models.Model):
      
      def __str__(self):
          return f'{self.user.username}  -  {self.criteria.name}'
+         class Evaluation(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    placement = models.ForeignKey(InternshipPlacement, on_delete=models.CASCADE)
+    criteria = models.ForeignKey(EvaluationCriteria, on_delete=models.SET_NULL, null=True)
+    score = models.PositiveIntegerField()
+    comment = models.TextField(blank=True)
+    evaluation_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.placement.user.username} - {self.criteria}: {self.score}"
+
+
 
 
 class StudentGrade(models.Model):
