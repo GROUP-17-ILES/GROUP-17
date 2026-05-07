@@ -1,6 +1,6 @@
 import { Container, Card, Form, Button, Row, Col, Table } from "react-bootstrap";
 import { useState } from "react";
-import '../styles/dash.css';
+import '../../styles/dash.css';
 
 function AcademicEvaluation() {
   const [assignedStudents] = useState([
