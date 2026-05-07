@@ -17,20 +17,79 @@ class CustomUser(AbstractUser):
     ID_number = models.CharField(max_length=20, unique=True) 
     REQUIRED_FIELDS = ['email', 'ID_number'] 
     created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Student(models.Model):
+    users = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
+    course_title = models.CharField(max_length=50)
+    university_name = models.CharField(max_length=60)
+    year_of_study = models.IntegerField()
+    assigned_supervisor = models.ForeignKey(
+     groups = models.ManyToManyField(
+        'auth.Group',
+        related_name='customuser_set',
+        blank=True
+    )
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        related_name= 'customuser_permissions',
+        blank=True
+    )
+    def __str__(self):
+        return f"{self.username} ({self.role})"
 
+    
+class Supervisor(models.Model):
+    users = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
+    place_of_work = models.CharField(max_length=100)
+    department = models.CharField(max_length=100)
+    staff_ID = models.CharField(max_length=20, unique=True)
 
-    def __str__(self): 
-     return self.username
-    def get_user_type_instances(self):
-        if self.role=='studentintern':
-            return hasattr(self,'studentintern') and self.studentintern
-        elif self.role=='workplace supervisior':
-            return hasattr(self,'workplace supervisior') and self.workplacesupervisior
-        elif self.role=='academic supervisior':
-            return hasattr(self,'academic supervisior') and self.academicsupervisior
-        elif self.role=='internship administrator':
-            return hasattr(self,'internship administrator') and self.internshipadministrator
-        return None
+    def __str__(self):
+class Admin(models.Model):
+    users = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
+    department = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.users.username} -ADMIN"
+class InternshipPlacement(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    place_of_internship = models.CharField(max_length=100)
+    department = models.CharField(max_length=100)
+    supervisor_name = models.CharField(max_length=50)
+    start_date = models.DateField()
+    end_date = models.DateField()
+
+    def __str__(self):
+        return f"{self.user.username} - {self.place_of_internship}"
+    class WeeklyLog(models.Model):
+    STATUS_CHOICES = [
+        ('draft', 'Draft'),
+        ('pending', 'Pending'),
+        ('approved', 'Approved'),
+        ('rejected', 'Rejected')
+    ]
+
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='weekly_logs')
+    week_number = models.IntegerField()
+    description = models.TextField()
+    date_submitted = models.DateTimeField(auto_now_add=True)
+    supervisor = models.ForeignKey(
+        Supervisor,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='reviewed_logs'
+    )
+    supervisor_comment = models.TextField(blank=True)
+    evaluation_score = models.PositiveIntegerField(null=True, blank=True)
+    reviewed_at = models.DateTimeField(null=True, blank=True)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
+
+    def __str__(self):
+        return f"Week {self.week_number} - {self.user.username} - {self.status}"
+    
+
+    
 class AcademicSupervisor(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='academicsupervisor')
     department = models.CharField(max_length=20, blank=False)
@@ -48,8 +107,12 @@ class StudentIntern(models.Model):
     course_of_study = models.CharField(max_length=30, blank=False)
     university_name = models.CharField(max_length=50, blank=False)
     current_year_of_study = models.IntegerField(default=1)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+
+ 'Supervisor',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='assigned_students'
 
     def __str__(self):
         return f"{self.user.username} - {self.student_number}"
