@@ -6,10 +6,10 @@ function DashboardLayout({ title, children }) {
   const { user } = useAuth();
 
   return (
-    <div className="flex min-h-screen bg-[#f8fafc] text-slate-800">
+    <div className="flex h-screen overflow-hidden bg-[#f8fafc] text-slate-800">
       <Sidebar />
 
-      <main className="flex-1 overflow-hidden px-6 py-6 lg:px-10">
+      <main className="flex-1 overflow-y-auto px-6 py-6 lg:px-10">
         <div className="dashboard-card mb-8 flex flex-col gap-6 border-0 bg-gradient-to-r from-indigo-600 via-violet-600 to-blue-500 p-8 text-white shadow-xl lg:flex-row lg:items-center lg:justify-between">
           <div>
             <p className="text-sm uppercase tracking-[0.35rem] text-indigo-100">
