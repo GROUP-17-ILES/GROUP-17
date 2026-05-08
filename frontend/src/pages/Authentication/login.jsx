@@ -11,10 +11,8 @@ function Login() {
   const [role, setRole] = useState("");
   const [isSignup, setIsSignup] = useState(false);
 
-  const navigate = (path) => {
-    window.location.href = path;
-  };
-
+  const navigate = useNavigate();
+   
   const handleSignup = (e) => {
     e.preventDefault();
 
@@ -79,7 +77,7 @@ function Login() {
             navigate("/academic");
           } else if (data.role === "workplace_supervisor") {
             navigate("/workplace");
-          } else if (data.role === "Internship_admin") {
+          } else if (data.role === "internship_administrator") {
             navigate("/admin");
           }
         } else {
