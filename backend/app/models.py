@@ -51,6 +51,8 @@ class Supervisor(models.Model):
     staff_ID = models.CharField(max_length=20, unique=True)
 
     def __str__(self):
+        return f"{self.users.username} -SUPERVISOR"
+
 class Admin(models.Model):
     users = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
     department = models.CharField(max_length=100)
