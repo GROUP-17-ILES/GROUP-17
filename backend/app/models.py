@@ -152,9 +152,9 @@ class Notification(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
-        return f"{self.title} - {self.user.username}
+        return f"{self.title} - {self.user.username}"
         
- class StatusHistory(models.Model):
+class StatusHistory(models.Model):
     log=models.ForeignKey(WeeklyLog,on_delete=models.CASCADE,related_name='history')
     old_status=models.CharField(max_length=10)
     new_status=models.CharField(max_length=10)
