@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class CustomUser(AbstractUser):
     ROLE_CHOICES=[
@@ -166,13 +167,16 @@ class StatusHistory(models.Model):
 
 class StudentGrade(models.Model):
      criteria=models.ForeignKey(EvaluationCriteria, on_delete=models.CASCADE)
-     efficiency=models.IntegerField(default=0)
-     time_management=models.IntegerField(default=0)
-     problemsolving=models.IntegerField(default=0)
-     professionalism=models.IntegerField(default=0)
+     efficiency=models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+     time_management=models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+     problemsolving=models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+     professionalism=models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
 
      total_score=models.FloatField(default=0)
      grade=models.CharField(max_length=2, blank=True)
+
+     def __str__(self):
+         return f"Grade: {self.grade} ({self.total_score:.2f})"
 
      def save(self, *args, **kwargs):
          self.total_score=(
