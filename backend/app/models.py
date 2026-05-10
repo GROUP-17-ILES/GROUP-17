@@ -25,9 +25,10 @@ class CustomUser(AbstractUser):
         blank=True
     )
     def __str__(self):
-        return f"{self.username} ({self.role})"
-    
-    
+        name = self.name or "Anonymous"
+        user_role = self.role or "No Role"
+        return f"{name} ({user_role})"
+
 class Student(models.Model):
     users = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
     course_title = models.CharField(max_length=50)
@@ -42,7 +43,7 @@ class Student(models.Model):
     )
     
     def __str__(self):
-        return f"{self.users.username} -STUDENT"
+        return f"{self.users.name} -STUDENT"
     
 class Supervisor(models.Model):
     users = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
@@ -165,10 +166,13 @@ class StatusHistory(models.Model):
 
 class StudentGrade(models.Model):
      criteria=models.ForeignKey(EvaluationCriteria, on_delete=models.CASCADE)
-     efficiency=models.IntegerField
-     time_management=models.IntegerField
-     problem_solving=models.IntegerField
-     professionalism=models.IntegerField
+     efficiency=models.IntegerField(default=0)
+     time_management=models.IntegerField(default=0)
+     problemsolving=models.IntegerField(default=0)
+     professionalism=models.IntegerField(default=0)
+
+     total_score=models.FloatField(default=0)
+     grade=models.CharField(max_length=2, blank=True)
 
      def save(self, *args, **kwargs):
          self.total_score=(
