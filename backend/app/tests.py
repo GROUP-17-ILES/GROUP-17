@@ -9,6 +9,7 @@ class SupervisorAssignmentFlowTests(APITestCase):
     def setUp(self):
         self.admin_user = CustomUser.objects.create_user(
             username='admin1',
+            email='admin1@example.com', # Added unique email
             password='pass12345',
             role='admin',
             name='System Admin',
@@ -19,6 +20,7 @@ class SupervisorAssignmentFlowTests(APITestCase):
 
         self.supervisor_user = CustomUser.objects.create_user(
             username='super1',
+            email='super1@example.com', # Added unique email
             password='pass12345',
             role='supervisor',
             name='Jane Supervisor',
@@ -34,6 +36,7 @@ class SupervisorAssignmentFlowTests(APITestCase):
 
         self.other_supervisor_user = CustomUser.objects.create_user(
             username='super2',
+            email='super2@example.com', # Added unique email
             password='pass12345',
             role='supervisor',
             name='John Supervisor',
@@ -49,6 +52,7 @@ class SupervisorAssignmentFlowTests(APITestCase):
 
         self.student_user = CustomUser.objects.create_user(
             username='student1',
+            email='student1@example.com', # Added unique email
             password='pass12345',
             role='student',
             name='Alice Student',
@@ -148,6 +152,7 @@ class InternshipPlacementTests(APITestCase):
     def setUp(self):
         self.student_user = CustomUser.objects.create_user(
             username='placementstudent',
+            email='placementstudent@example.com',
             password='pass12345',
             role='student',
             name='Placement Student',
