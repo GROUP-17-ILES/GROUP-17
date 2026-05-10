@@ -123,8 +123,10 @@ class Evaluation(models.Model):
     evaluation_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.placement.user.username} - {self.criteria}: {self.score}"
-        
+        user_name = self.placement.user.name if self.placement and self.placement.user else "Unknown User"
+        criteria_name = self.criteria.criteria_name if self.criteria else "No Criteria Assigned"
+        return f"{user_name} - {criteria_name}: {self.score}"
+
 class Feedback(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='feedback')
     subject = models.CharField(max_length=150)
@@ -133,7 +135,7 @@ class Feedback(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.subject} - {self.user.username}"
+        return f"{self.subject} - {self.user.name}"
         
 class SiteSetting(models.Model):
     site_name = models.CharField(max_length=100, default='ILES')
