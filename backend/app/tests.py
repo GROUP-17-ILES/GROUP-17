@@ -2,7 +2,7 @@ from django.urls import reverse
 from rest_framework.authtoken.models import Token
 from rest_framework.test import APITestCase
 
-from .models import Admin, CustomUser, InternshipPlacement, Student, Supervisor, WeeklyLog
+from .models import Admin, CustomUser, InternshipPlacement, Student, Supervisor, WeeklyLog, EvaluationCriteria, StudentGrade
 
 
 class SupervisorAssignmentFlowTests(APITestCase):
