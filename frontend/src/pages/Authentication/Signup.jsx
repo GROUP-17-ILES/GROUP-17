@@ -39,6 +39,9 @@ function Signup() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -336,6 +339,7 @@ function Signup() {
             />
           )}
 
+          <div className="relative">
           <input
             type="password"
             name="password"
@@ -345,6 +349,16 @@ function Signup() {
             className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
             disabled={loading}
           />
+            <button
+              type="button"
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-xl leading-none"
+              aria-label={showPassword ? "Hide password" : "Show password"}
+              tabIndex={-1}
+            >
+              {showPassword ? "🙈" : "👁️"}
+            </button>
+          </div>
 
           <input
             type="password"
@@ -355,6 +369,17 @@ function Signup() {
             className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
             disabled={loading}
           />
+          
+          <button
+              type="button"
+              onClick={() => setShowConfirmPassword((prev) => !prev)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-xl leading-none"
+              aria-label={showConfirmPassword ? "Hide confirm password" : "Show confirm password"}
+              tabIndex={-1}
+            >
+              {showConfirmPassword ? "🙈" : "👁️"}
+            </button>
+          </div>
 
           {error && (
             <div className="bg-indigo-100 border border-indigo-400 text-indigo-700 px-4 py-2 rounded text-sm">
