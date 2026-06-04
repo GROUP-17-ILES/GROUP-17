@@ -12,9 +12,8 @@ class CustomUser(AbstractUser):
     name=models.CharField(max_length=30,null=False,blank=False)
     role=models.CharField(max_length=50,choices=ROLE_CHOICES)
     phone_number=models.CharField(max_length=15,blank=True,null=True)
-    email=models.EmailField(unique=True)
     ID_number = models.CharField(max_length=20, unique=True) 
-    REQUIRED_FIELDS = ['email', 'ID_number'] 
+    REQUIRED_FIELDS = ['ID_number'] 
     groups = models.ManyToManyField(
         'auth.Group',
         related_name='customuser_set',
