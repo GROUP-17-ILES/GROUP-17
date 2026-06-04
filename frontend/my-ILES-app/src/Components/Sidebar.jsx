@@ -14,6 +14,7 @@ function Sidebar() {
       ["Submit Log", "/submitlog"],
       ["Internship", "/student/internshipdetails"],
       ["Feedback", "/student/feedback"],
+      ["Student grades", "/admin/Studentgrades"],
     ],
     supervisor: [
       ["Dashboard", "/supervisor"],
@@ -24,6 +25,9 @@ function Sidebar() {
       ["Dashboard", "/admin"],
       ["Users", "/admin/users"],
       ["Opportunities", "/admin/opportunities"],
+      ["Reports", "/admin/reports"],
+      ["Settings", "/admin/settings"],
+      ["Status History", "/admin/Statushistory"],
     ],
   };
 
