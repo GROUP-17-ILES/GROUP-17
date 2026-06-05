@@ -7,6 +7,13 @@ function Sidebar() {
 
   if (!user) return null;
 
+  const roleEmojis = {
+  student: "🎓",
+  supervisor: "🧑‍🏫",
+  admin: "👔",};
+
+  const emoji = roleEmojis[user.role] || "👤";
+
   const sections = {
     student: [
       ["Dashboard", "/student"],
@@ -30,6 +37,15 @@ function Sidebar() {
       ["Status History", "/admin/Statushistory"],
     ],
   };
+  const roleLabels = {
+    student: "Student",
+    supervisor: "Supervisor",
+    admin: "Admin",
+  };
+
+  const currentRole = user.role?.toLowerCase();
+  const roleLabel = roleLabels[currentRole] ?? "User";
+
 
   const handleLogout = () => {
     logout();
@@ -41,18 +57,15 @@ function Sidebar() {
       <div className="rounded-[30px] bg-gradient-to-br from-slate-900 to-slate-700 p-6 text-white shadow-lg">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-xs uppercase tracking-[0.4rem] text-slate-300">ROLE</p>
             <h2 className="mt-3 text-3xl font-black capitalize">
-              {user.role}
+              {roleLabel}
             </h2>
           </div>
           <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-2xl">
-            ✦
+            {emoji}
           </div>
         </div>
-        <p className="mt-4 text-sm text-slate-300">
-          Hello, {user?.username}
-        </p>
+
       </div>
 
       <div className="mt-8 px-2 text-xs font-semibold uppercase tracking-[0.3rem] text-slate-400">
