@@ -39,7 +39,6 @@ const Login = () => {
       <div className="grid w-full max-w-2xl overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/60 shadow-2xl backdrop-blur-2xl lg:grid-cols-2">
         <div className="hidden flex-col justify-between bg-gradient-to-br from-cyan-500/30 to-blue-900/40 p-12 lg:flex">
           <div>
-            <p className="text-sm uppercase tracking-[0.4rem] text-cyan-200">GROUP-17</p>
             <h1 className="mt-6 text-6xl font-black leading-tight text-white">
               ILES 
             </h1>
