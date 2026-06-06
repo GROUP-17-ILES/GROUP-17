@@ -40,7 +40,6 @@ if request.method == 'GET':
         return Response({"message": "DELETE working"})
 
 
-
 def require_role(user, allowed_roles):
     if user.role not in allowed_roles:
         return Response(
