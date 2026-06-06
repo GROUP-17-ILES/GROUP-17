@@ -30,7 +30,11 @@ if request.method == 'GET':
             "message": "POST working",
             "data_received": request.data
         })
-
+  if request.method == 'PATCH':
+        return Response({
+            "message": "PATCH working",
+            "data_received": request.data
+        })
 
 
 
