@@ -20,18 +20,11 @@ def choose_role(request):
         "roles": ["student", "supervisor", "admin"]
     })
 
-@api_view(['GET'])
+@api_view(['GET', 'POST', 'PATCH', 'DELETE'])
+@permission_classes([AllowAny])
 def test_api(request):
-    return Response({"message": "API working"})
-   if request.method == 'GET':
-        return Response({"message": "GET working"})
 
-    if request.method == 'POST':
-        return Response({
-            "message": "POST working",
-            "data_received": request.data
-        })
-
+        
 
 def require_role(user, allowed_roles):
     if user.role not in allowed_roles:
