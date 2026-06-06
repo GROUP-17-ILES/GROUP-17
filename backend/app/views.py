@@ -35,6 +35,10 @@ if request.method == 'GET':
             "message": "PATCH working",
             "data_received": request.data
         })
+    
+  if request.method == 'DELETE':
+        return Response({"message": "DELETE working"})
+
 
 
 
