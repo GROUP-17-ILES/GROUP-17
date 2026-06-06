@@ -23,6 +23,14 @@ def choose_role(request):
 @api_view(['GET'])
 def test_api(request):
     return Response({"message": "API working"})
+   if request.method == 'GET':
+        return Response({"message": "GET working"})
+
+    if request.method == 'POST':
+        return Response({
+            "message": "POST working",
+            "data_received": request.data
+        })
 
 
 def require_role(user, allowed_roles):
