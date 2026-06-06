@@ -25,6 +25,12 @@ def choose_role(request):
 def test_api(request):
 if request.method == 'GET':
         return Response({"message": "GET working"})
+  if request.method == 'POST':
+        return Response({
+            "message": "POST working",
+            "data_received": request.data
+        })
+
 
 
 
