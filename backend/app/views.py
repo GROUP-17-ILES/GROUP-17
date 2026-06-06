@@ -41,7 +41,6 @@ if request.method == 'GET':
 
 
 
-
 def require_role(user, allowed_roles):
     if user.role not in allowed_roles:
         return Response(
