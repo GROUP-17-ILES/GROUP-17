@@ -23,7 +23,8 @@ def choose_role(request):
 @api_view(['GET', 'POST', 'PATCH', 'DELETE'])
 @permission_classes([AllowAny])
 def test_api(request):
-
+if request.method == 'GET':
+        return Response({"message": "GET working"})
 
 
 
