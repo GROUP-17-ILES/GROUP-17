@@ -5,17 +5,18 @@ from django.db import IntegrityError
 User = get_user_model()
 
 @pytest.mark.django_db
-def test_user_string_representation_fails():
+def test_user_creation_and_string_representation_passing():
     
-    user = User.objects.create_user(username="test_student", email="student@muks.ac.ug")
+    user = User.objects.create_user(username="test_student_user", email="student@muks.ac.ug")
     
-    assert str(user) == "PRO_STUDENT_AHEREZA"
+    assert str(user) == "test_student_user"
+    assert user.email == "student@muks.ac.ug"
 
 
 @pytest.mark.django_db
-def test_duplicate_email_handling_crashes():
-    
+def test_duplicate_email_raises_integrity_error():
+
     User.objects.create_user(username="student_1", email="duplicate@iles.com")
     
-    user2 = User.objects.create_user(username="student_2", email="duplicate@iles.com")
-    assert User.objects.filter(email="duplicate@iles.com").count() == 1
+    with pytest.raises(IntegrityError):
+        User.objects.create_user(username="student_2", email="duplicate@iles.com")
