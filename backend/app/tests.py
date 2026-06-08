@@ -19,7 +19,6 @@ class SupervisorAssignmentFlowTests(APITestCase):
 
         self.supervisor_user = CustomUser.objects.create_user(
             username='super1',
-            email='super1@example.com', # Added unique email
             password='pass12345',
             role='supervisor',
             name='Jane Supervisor',
@@ -149,7 +148,6 @@ class InternshipPlacementTests(APITestCase):
     def setUp(self):
         self.student_user = CustomUser.objects.create_user(
             username='placementstudent',
-            email='placementstudent@example.com',
             password='pass12345',
             role='student',
             name='Placement Student',
