@@ -53,7 +53,7 @@ function Sidebar() {
   };
 
   return (
-    <aside className="sticky top-0 flex h-screen w-[290px] flex-col border-r border-slate-200 bg-white px-5 py-6">
+    <aside className="sticky top-0 flex h-screen w-[290px] flex-col border-r border-slate-200 bg-white px-5 py-4">
       <div className="rounded-[30px] bg-gradient-to-br from-slate-900 to-slate-700 p-6 text-white shadow-lg">
         <div className="flex items-center justify-between">
           <div>
