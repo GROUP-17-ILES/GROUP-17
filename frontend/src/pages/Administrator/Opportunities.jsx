@@ -11,7 +11,8 @@ const Opportunities = () => {
   }, []);
 
   return (
-    <div>
+    <DashboardLayout title="Opportunities">
+      <div>
       <h1 className="text-2xl font-bold text-red-600 mb-4">
         Opportunity Listings
       </h1>
@@ -32,6 +33,7 @@ const Opportunities = () => {
         )}
       </div>
     </div>
+    </DashboardLayout>
   );
 };
 
