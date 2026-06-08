@@ -15,7 +15,6 @@ import InternshipDetails from "../pages/Student/InternshipDetails";
 import Opportunities from "../pages/Administrator/Opportunities";
 import Reports from "../pages/Administrator/Reports";
 import Settings from "../pages/Administrator/Settings";
-import AdminFeedback from "../pages/Administrator/Feedback";
 import ProtectedRoute from "./ProtectedRoute";
 import StatusHistory from "../pages/Administrator/Statushistory";
 import StudentGrades from "../pages/Student/StudentGrades";
@@ -44,7 +43,6 @@ const AppRoutes = () => {
         <Route path="/admin/opportunities" element={<ProtectedRoute requiredRole="admin"><Opportunities /></ProtectedRoute>} />
         <Route path="/admin/reports" element={<ProtectedRoute requiredRole="admin"><Reports /></ProtectedRoute>} />
         <Route path="/admin/settings" element={<ProtectedRoute requiredRole="admin"><Settings /></ProtectedRoute>} />
-        <Route path="/admin/adminfeedback" element={<ProtectedRoute requiredRole="admin"><AdminFeedback /></ProtectedRoute>} />
         <Route path="/admin/statushistory" element={<StatusHistory />} />
         <Route path="/student/studentgrades" element={<StudentGrades />}/>
       </Routes>
