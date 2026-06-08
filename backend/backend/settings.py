@@ -141,7 +141,6 @@ STATIC_URL = 'static/'
 # settings.py
 AUTH_USER_MODEL = 'app.CustomUser'
 CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOWED_ORIGINS = ['*']
 ALLOWED_HOSTS = ['*']
 
 REST_FRAMEWORK = {
