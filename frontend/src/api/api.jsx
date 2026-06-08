@@ -2,8 +2,8 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: window.location.hostname.includes("onrender.com")
-    ? "https://group-17-iles.onrender.com/api"
-    : "http://127.0.0.1:8000/api", 
+    ? "https://group-17-iles.onrender.com"
+    : "http://127.0.0.1:8000", 
 });
 
 api.interceptors.request.use((config) => {
