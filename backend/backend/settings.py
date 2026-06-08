@@ -145,8 +145,12 @@ USE_TZ = True
 STATIC_URL = 'static/'
 # settings.py
 AUTH_USER_MODEL = 'app.CustomUser'
-CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = ["https://group-17-iles.onrender.com"]
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://group-17-kxpr.onrender.com", 
+    "http://localhost:5173",               
+    "http://127.0.0.1:5173",
+]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
