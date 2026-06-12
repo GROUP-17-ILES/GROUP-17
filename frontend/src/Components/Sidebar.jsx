@@ -53,7 +53,7 @@ function Sidebar() {
   };
 
   return (
-    <aside className="sticky top-0 flex h-screen w-[290px] flex-col border-r border-slate-200 bg-white px-5 py-4">
+    <aside className="sticky top-0 flex h-screen w-[290px] flex-col justify-between border-r border-slate-200 bg-white px-5 py-4">
       <div className="rounded-[30px] bg-gradient-to-br from-slate-900 to-slate-700 p-6 text-white shadow-lg">
         <div className="flex items-center justify-between">
           <div>
@@ -95,7 +95,7 @@ function Sidebar() {
       <button
         type="button"
         onClick={handleLogout}
-        className="mt-auto mt-4 rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 font-semibold text-slate-700 hover:bg-red-500 hover:text-white shrink-0"
+        className="mt-auto rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 font-semibold text-slate-700 hover:bg-red-500 hover:text-white shrink-0"
       >
         Logout
       </button>
