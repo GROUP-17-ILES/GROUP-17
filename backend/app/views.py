@@ -23,7 +23,21 @@ def choose_role(request):
 @api_view(['GET', 'POST', 'PATCH', 'DELETE'])
 @permission_classes([AllowAny])
 def test_api(request):
-    return Response({"message": "API working"})
+if request.method == 'GET':
+        return Response({"message": "GET working"})
+  if request.method == 'POST':
+        return Response({
+            "message": "POST working",
+            "data_received": request.data
+        })
+  if request.method == 'PATCH':
+        return Response({
+            "message": "PATCH working",
+            "data_received": request.data
+        })
+    
+  if request.method == 'DELETE':
+        return Response({"message": "DELETE working"})
 
 def require_role(user, allowed_roles):
     if user.role not in allowed_roles:
@@ -57,7 +71,6 @@ def signup(request):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 # LOGIN
 @api_view(['POST'])
@@ -776,3 +789,7 @@ def delete_student_grade(request, grade_id):
     return Response(
         {"message": "Student grade deleted successfully"},
         status=status.HTTP_200_OK)
+
+
+
+
