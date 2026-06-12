@@ -346,14 +346,13 @@ function Signup() {
             placeholder="Password"
             value={formData.password}
             onChange={handleChange}
-            className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
+            className="w-full p-3 pr-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
             disabled={loading}
           />
             <button
               type="button"
               onClick={() => setShowPassword((prev) => !prev)}
               className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center justify-center w-7 h-7 text-lg leading-none select-none"
-              style={{ top: "50%", transform: "translateY(-50%)" }}
               aria-label={showPassword ? "Hide password" : "Show password"}
               tabIndex={-1}
             >
@@ -368,14 +367,13 @@ function Signup() {
             placeholder="Confirm Password"
             value={formData.confirmPassword}
             onChange={handleChange}
-            className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
+            className="w-full p-3 pr-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
             disabled={loading}
           />
           <button
               type="button"
               onClick={() => setShowConfirmPassword((prev) => !prev)}
               className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center justify-center w-7 h-7 text-lg leading-none select-none"
-              style={{ top: "50%", transform: "translateY(-50%)" }}
               aria-label={showConfirmPassword ? "Hide confirm password" : "Show confirm password"}
               tabIndex={-1}
             >
