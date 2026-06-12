@@ -72,7 +72,7 @@ function Sidebar() {
         Main Menu
       </div>
 
-      <nav className="mt-4 flex flex-1 flex-col gap-2">
+      <nav className="mt-4 flex flex-1 flex-col gap-2 overflow-y-auto pr-1">
         {sections[user.role]?.map(([label, route]) => (
           <NavLink
             key={route}
@@ -95,7 +95,7 @@ function Sidebar() {
       <button
         type="button"
         onClick={handleLogout}
-        className="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 font-semibold text-slate-700 hover:bg-red-500 hover:text-white"
+        className="mt-auto mt-4 rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 font-semibold text-slate-700 hover:bg-red-500 hover:text-white shrink-0"
       >
         Logout
       </button>
