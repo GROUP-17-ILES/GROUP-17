@@ -23,20 +23,22 @@ def choose_role(request):
 @api_view(['GET', 'POST', 'PATCH', 'DELETE'])
 @permission_classes([AllowAny])
 def test_api(request):
-if request.method == 'GET':
+    if request.method == 'GET':
         return Response({"message": "GET working"})
-  if request.method == 'POST':
+        
+    if request.method == 'POST':
         return Response({
             "message": "POST working",
             "data_received": request.data
         })
-  if request.method == 'PATCH':
+        
+    if request.method == 'PATCH':
         return Response({
             "message": "PATCH working",
             "data_received": request.data
         })
     
-  if request.method == 'DELETE':
+    if request.method == 'DELETE':
         return Response({"message": "DELETE working"})
 
 def require_role(user, allowed_roles):
