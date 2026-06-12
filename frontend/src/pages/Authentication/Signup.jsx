@@ -339,14 +339,14 @@ function Signup() {
             />
           )}
 
-          <div className="relative">
+        <div className="relative">
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             name="password"
             placeholder="Password"
             value={formData.password}
             onChange={handleChange}
-            className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
+            className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
             disabled={loading}
           />
             <button
@@ -361,16 +361,16 @@ function Signup() {
             </button>
           </div>
 
+         <div className="relative">
           <input
-            type="password"
+            type={showConfirmPassword ? "text" : "password"}
             name="confirmPassword"
             placeholder="Confirm Password"
             value={formData.confirmPassword}
             onChange={handleChange}
-            className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
+            className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
             disabled={loading}
           />
-          
           <button
               type="button"
               onClick={() => setShowConfirmPassword((prev) => !prev)}
@@ -381,7 +381,7 @@ function Signup() {
             >
               {showConfirmPassword ? "🙈" : "👁️"}
             </button>
-          
+          </div>
           {error && (
             <div className="bg-indigo-100 border border-indigo-400 text-indigo-700 px-4 py-2 rounded text-sm">
               {error}
