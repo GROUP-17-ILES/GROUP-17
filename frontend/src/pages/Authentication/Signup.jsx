@@ -199,7 +199,7 @@ function Signup() {
             name="role"
             value={formData.role}
             onChange={handleChange}
-            className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
+            className="w-full p-3 border rounded-lg placeholder:text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-700"
             disabled={loading}
             required
           >
@@ -217,7 +217,7 @@ function Signup() {
             placeholder="Username"
             value={formData.username}
             onChange={handleChange}
-            className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
+            className="w-full p-3 border rounded-lg placeholder:text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-700"
             disabled={loading}
           />
 
@@ -227,7 +227,7 @@ function Signup() {
             placeholder="Full Name"
             value={formData.name}
             onChange={handleChange}
-            className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
+            className="w-full p-3 border rounded-lg placeholder:text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-700"
             disabled={loading}
           />
 
@@ -237,7 +237,7 @@ function Signup() {
             placeholder="ID Number"
             value={formData.ID_number}
             onChange={handleChange}
-            className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
+            className="w-full p-3 border rounded-lg placeholder:text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-700"
             disabled={loading}
           />
 
@@ -247,7 +247,7 @@ function Signup() {
             placeholder="Phone Number (Optional)"
             value={formData.telephone_number}
             onChange={handleChange}
-            className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
+            className="w-full p-3 border rounded-lg placeholder:text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-700"
             disabled={loading}
           />
 
@@ -259,7 +259,7 @@ function Signup() {
                 placeholder="Course Title"
                 value={formData.course_title}
                 onChange={handleChange}
-                className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
+                className="w-full p-3 border rounded-lg placeholder:text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-700"
                 disabled={loading}
               />
 
@@ -269,7 +269,7 @@ function Signup() {
                 placeholder="University Name"
                 value={formData.university_name}
                 onChange={handleChange}
-                className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
+                className="w-full p-3 border rounded-lg placeholder:text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-700"
                 disabled={loading}
               />
 
@@ -277,8 +277,7 @@ function Signup() {
                 name="year_of_study"
                 value={formData.year_of_study}
                 onChange={handleChange}
-                className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
-                disabled={loading}
+                className="w-full p-3 border rounded-lg placeholder:text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-700"
                 required
               >
                 <option value="" disabled>
@@ -301,7 +300,7 @@ function Signup() {
                 placeholder="Place of Work"
                 value={formData.place_of_work}
                 onChange={handleChange}
-                className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
+                className="w-full p-3 border rounded-lg placeholder:text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-700"
                 disabled={loading}
               />
 
@@ -311,7 +310,7 @@ function Signup() {
                 placeholder="Department"
                 value={formData.department}
                 onChange={handleChange}
-                className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
+                className="w-full p-3 border rounded-lg placeholder:text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-700"
                 disabled={loading}
               />
 
@@ -321,7 +320,7 @@ function Signup() {
                 placeholder="Staff ID"
                 value={formData.staff_ID}
                 onChange={handleChange}
-                className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
+                className="w-full p-3 border rounded-lg placeholder:text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-700"
                 disabled={loading}
               />
             </>
@@ -334,7 +333,7 @@ function Signup() {
               placeholder="Department"
               value={formData.department}
               onChange={handleChange}
-              className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
+              className="w-full p-3 border rounded-lg placeholder:text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-700"
               disabled={loading}
             />
           )}
@@ -346,7 +345,7 @@ function Signup() {
             placeholder="Password"
             value={formData.password}
             onChange={handleChange}
-            className="w-full p-3 pr-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
+            className="w-full p-3 pr-10 border rounded-lg placeholder:text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-700"
             disabled={loading}
           />
             <button
@@ -367,7 +366,7 @@ function Signup() {
             placeholder="Confirm Password"
             value={formData.confirmPassword}
             onChange={handleChange}
-            className="w-full p-3 pr-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700"
+            className="w-full p-3 pr-10 border rounded-lg placeholder:text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-700"
             disabled={loading}
           />
           <button

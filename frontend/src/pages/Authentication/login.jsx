@@ -12,6 +12,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,11 +53,42 @@ const Login = () => {
               <h2 className="mt-2 text-4xl font-black text-white">Sign in</h2>
             </div>
 
-            <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} disabled={loading} />
-            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} disabled={loading} />
+            <div className="relative w-full">
+  <input 
+    type="text" 
+    placeholder="Username" 
+    value={username} 
+    onChange={(e) => setUsername(e.target.value)} 
+    disabled={loading} 
+    className="w-full p-3 border border-slate-700/50 rounded-lg bg-slate-900/50 placeholder-slate-300 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"
+  />
+</div>
 
-            {error && <div className="rounded-2xl border border-red-500/20 bg-red-500/10 p-4 text-sm text-red-200">{error}</div>}
+    <div className="relative w-full">
+      <input 
+        type={showPassword ? "text" : "password"} 
+        placeholder="Password" 
+        value={password} 
+        onChange={(e) => setPassword(e.target.value)} 
+        disabled={loading} 
+        className="w-full p-3 pr-10 border border-slate-700/50 rounded-lg bg-slate-900/50 placeholder-slate-300 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"
+      />
+      <button 
+        type="button"
+        onClick={() => setShowPassword(!showPassword)}
+        className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-7 h-7 text-slate-400 hover:text-white"
+        tabIndex={-1}
+      >
+        {showPassword ? "🙈" : "👁️"}
+      </button>
+    </div>
 
+    
+    {error && (
+      <div className="w-full p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-semibold">
+        {error}
+      </div>
+    )}
             <button type="submit" disabled={loading} className="w-full rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-4 font-bold text-white shadow-xl shadow-cyan-500/20 hover:scale-[1.01] disabled:opacity-50">
               {loading ? "Logging in..." : "Log in"}
             </button>
