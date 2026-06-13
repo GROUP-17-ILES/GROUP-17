@@ -72,7 +72,7 @@ class SupervisorAssignmentFlowTests(APITestCase):
         )
 
         self.assertEqual(response.status_code, 200)
-        self.student.refresh_from_db()
+        self.student.refresh_from_db()  
         self.assertEqual(self.student.assigned_supervisor, self.supervisor)
 
     def test_assigned_supervisor_can_review_student_log(self):
