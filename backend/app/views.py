@@ -19,6 +19,7 @@ def choose_role(request):
     return JsonResponse({
         "roles": ["student", "supervisor", "admin"]
     })
+  
 
 @api_view(['GET', 'POST', 'PATCH', 'DELETE'])
 @permission_classes([AllowAny])
