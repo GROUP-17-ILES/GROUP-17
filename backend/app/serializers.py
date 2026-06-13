@@ -9,6 +9,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
     place_of_work = serializers.CharField(required=False, write_only=True, allow_blank=True)
     department = serializers.CharField(required=False, write_only=True, allow_blank=True)
     staff_ID = serializers.CharField(required=False, write_only=True, allow_blank=True)
+    
 
     class Meta:
         model = CustomUser 
