@@ -14,6 +14,7 @@ from .serializers import ( CustomUserSerializer,
                           EvaluationSerializer, StudentSerializer, SupervisorSerializer,
                           FeedbackSerializer, NotificationSerializer, StatusHistorySerializer, StudentGradeSerializer
 )
+
  
 def choose_role(request):
     return JsonResponse({
