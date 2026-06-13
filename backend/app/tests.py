@@ -5,7 +5,6 @@ from rest_framework.test import APITestCase
 from app.models import Admin, CustomUser, InternshipPlacement, Student, Supervisor, WeeklyLog, EvaluationCriteria, StudentGrade
 
 
-
 class SupervisorAssignmentFlowTests(APITestCase):
     def setUp(self):
         self.admin_user = CustomUser.objects.create_user(
