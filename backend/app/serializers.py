@@ -30,6 +30,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
             'password': {'write_only': True},
             'role': {'required': True, 'allow_blank': False},
         }
+        
 
     def validate(self, attrs):
         role = attrs.get("role")
