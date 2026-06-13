@@ -35,7 +35,6 @@ def require_role(user, allowed_roles):
         )
     return None
 
-
 def notify_weekly_log_submitted(weekly_log):
     Notification.objects.create(
         user=weekly_log.user,
